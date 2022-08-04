@@ -14,7 +14,7 @@ And add to the top of your project's RuboCop configuration file (`.rubocop.yml`)
   inherit_gem:
     rubocop-intum: rubocop.yml
   ```
-Exapmle: [.rubocop.yml](/.rubocop.yml)
+example: [.rubocop.yml](/.rubocop.yml)
 
 Recommended Gems
 
