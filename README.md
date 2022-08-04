@@ -1,35 +1,26 @@
 # Rubocop::Intum
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rubocop/intum`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
 ## Installation
-
+  
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'rubocop-intum'
+gem 'rubocop-intum', require: false
 ```
 
-And then execute:
+And add to the top of your project's RuboCop configuration file:
 
-    $ bundle install
+  ```yml
+  inherit_gem:
+    rubocop-intum: rubocop.yml
+  ```
 
-Or install it yourself as:
+Recommender gems
 
-    $ gem install rubocop-intum
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test-unit` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rubocop-intum.
+```ruby
+gem "rubocop", ">= 1.32.0", require: false
+gem "rubocop-minitest", ">= 0.21.0", require: false
+gem "rubocop-performance", ">= 1.14.3", require: false
+gem "rubocop-rails", ">= 2.15.2", require: false
+gem "rubocop-intum", ">= 0.1.2", require: false
+```
