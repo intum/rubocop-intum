@@ -8,7 +8,7 @@ Add this line to your application's Gemfile:
 gem 'rubocop-intum', require: false
 ```
 
-And add to the top of your project's RuboCop configuration file:
+And add to the top of your project's RuboCop configuration file (`.rubocop.yml`) :
 
   ```yml
   inherit_gem:
