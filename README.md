@@ -15,7 +15,7 @@ And add to the top of your project's RuboCop configuration file (`.rubocop.yml`)
     rubocop-intum: rubocop.yml
   ```
 
-Recommender gems
+Recommended Gems
 
 ```ruby
 gem "rubocop", ">= 1.32.0", require: false
