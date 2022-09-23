@@ -119,7 +119,7 @@ Metrics/AbcSize:
   VersionChanged: '0.81'
   # The ABC size is a calculated magnitude, so this number can be an Integer or
   # a Float.
-  IgnoredMethods: []
+  AllowedMethods: []
   Max: 50
 
 
@@ -204,7 +204,7 @@ Style/BlockDelimiters:
     # This looks at the usage of a block's method to determine its type (e.g. is
     # the result of a `map` assigned to a variable or passed to another
     # method) but exceptions are permitted in the `ProceduralMethods`,
-    # `FunctionalMethods` and `IgnoredMethods` sections below.
+    # `FunctionalMethods` and `AllowedMethods` sections below.
     - semantic
     # The `braces_for_chaining` style enforces braces around single line blocks
     # and do..end around multi-line blocks, except for multi-line blocks whose
@@ -245,7 +245,7 @@ Style/BlockDelimiters:
     - let!
     - subject
     - watch
-  IgnoredMethods:
+  AllowedMethods:
     # Methods that can be either procedural or functional and cannot be
     # categorised from their usage alone, e.g.
     #
@@ -287,7 +287,7 @@ Style/BlockDelimiters:
   #   collection.each do |element| puts element end
   AllowBracesOnProceduralOneLiners: false
   # The BracesRequiredMethods overrides all other configurations except
-  # IgnoredMethods. It can be used to enforce that all blocks for specific
+  # AllowedMethods. It can be used to enforce that all blocks for specific
   # methods use braces. For example, you can use this to enforce Sorbet
   # signatures use braces even when the rest of your codebase enforces
   # the `line_count_based` style.
@@ -512,7 +512,7 @@ Style/NumericPredicate:
   SupportedStyles:
     - predicate
     - comparison
-  IgnoredMethods: []
+  AllowedMethods: []
   # Exclude RSpec specs because assertions like `expect(1).to be > 0` cause
   # false positives.
   Exclude:
@@ -581,7 +581,7 @@ Style/SymbolProc:
   VersionChanged: '0.64'
   # A list of method names to be ignored by the check.
   # The names should be fairly unique, otherwise you'll end up ignoring lots of code.
-  IgnoredMethods:
+  AllowedMethods:
     - respond_to
     - define_method
 
@@ -768,7 +768,7 @@ Layout/ParameterAlignment:
 
 Style/MethodCallWithArgsParentheses:
   Enabled: false
-  # IgnoredMethods:
+  # AllowedMethods:
   # - require
   # - require_relative
   # - require_dependency
