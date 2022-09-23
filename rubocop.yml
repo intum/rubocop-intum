@@ -778,6 +778,10 @@ Style/MethodCallWithArgsParentheses:
   # Exclude:
   # - "/**/Gemfile"
 
+Rails/WhereExists:
+  EnforcedStyle: where
+  Enabled: true
+
 Style/ClassMethodsDefinitions:
   EnforcedStyle: def_self
   Enabled: true
