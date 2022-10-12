@@ -7,7 +7,7 @@
 
 inherit_gem:
   rubocop-shopify: rubocop.yml
-# inherit_from: rubocop-shopify.yml
+#inherit_from: rubocop-shopify.yml
 
 require:
   - rubocop-minitest
@@ -84,6 +84,9 @@ Layout/FirstHashElementIndentation:
 #     - space
 #     - no_space
 #   VersionChanged: '0.52.1'
+
+Layout/SpaceBeforeBlockBraces:
+  Enabled: true
 
 Layout/SpaceInsideHashLiteralBraces:
   Description: "Use spaces inside hash literal braces - or don't."
@@ -321,10 +324,10 @@ Style/ClassAndModuleChildren:
     - nested
     - compact
 
-# Style/CommentedKeyword:
-#   Description: 'Do not place comments on the same line as certain keywords.'
-#   Enabled: false
-#   VersionAdded: '0.51'
+Style/CommentedKeyword:
+  Description: 'Do not place comments on the same line as certain keywords.'
+  Enabled: false
+  VersionAdded: '0.51'
 
 Style/ConditionalAssignment:
   Description: >-
@@ -346,6 +349,9 @@ Style/ConditionalAssignment:
   # at least one multiline branch.
   SingleLineConditionsOnly: true
   IncludeTernaryExpressions: false
+
+Style/Documentation:
+  Enabled: false
 
 # Style/Documentation:
 #   Description: 'Document classes and non-namespace modules.'
@@ -779,5 +785,5 @@ Minitest/AssertInDelta:
 ## PERFORMANCE
 
 Performance/CollectionLiteralInLoop:
-  Enabled: false
+  Enabled: true
 
