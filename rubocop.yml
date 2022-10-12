@@ -1,9 +1,13 @@
+# v0.1.5
+# https://github.com/intum/rubocop-intum/blob/main/rubocop.yml
+
 # tu wpisujemy tylko różnice w odniesieniu od domyślnych reguł z pliku:
 # https://github.com/rubocop-hq/rubocop/blob/master/config/default.yml
-# https://github.com/Shopify/ruby-style-guide/blob/v2.8.0/rubocop.yml
+# https://github.com/Shopify/ruby-style-guide/blob/main/rubocop.yml
 
 inherit_gem:
   rubocop-shopify: rubocop.yml
+# inherit_from: rubocop-shopify.yml
 
 require:
   - rubocop-minitest
@@ -65,21 +69,21 @@ Layout/FirstHashElementIndentation:
   # But it can be overridden by setting this parameter
   IndentationWidth: ~
 
-Layout/SpaceBeforeBlockBraces:
-  Description: >-
-                 Checks that the left block brace has or doesn't have space
-                 before it.
-  Enabled: false
-  VersionAdded: '0.49'
-  EnforcedStyle: space
-  SupportedStyles:
-    - space
-    - no_space
-  EnforcedStyleForEmptyBraces: space
-  SupportedStylesForEmptyBraces:
-    - space
-    - no_space
-  VersionChanged: '0.52.1'
+# Layout/SpaceBeforeBlockBraces:
+#   Description: >-
+#                  Checks that the left block brace has or doesn't have space
+#                  before it.
+#   Enabled: false
+#   VersionAdded: '0.49'
+#   EnforcedStyle: no_space
+#   SupportedStyles:
+#     - space
+#     - no_space
+#   EnforcedStyleForEmptyBraces: space
+#   SupportedStylesForEmptyBraces:
+#     - space
+#     - no_space
+#   VersionChanged: '0.52.1'
 
 Layout/SpaceInsideHashLiteralBraces:
   Description: "Use spaces inside hash literal braces - or don't."
@@ -107,28 +111,17 @@ Layout/TrailingWhitespace:
   VersionChanged: '0.83'
   AllowInHeredoc: true # TO CHECK
 
-Metrics/AbcSize:
-  Description: >-
-                 A calculated magnitude based on number of assignments,
-                 branches, and conditions.
-  Reference:
-    - http://c2.com/cgi/wiki?AbcMetric
-    - https://en.wikipedia.org/wiki/ABC_Software_Metric
-  Enabled: true
-  VersionAdded: '0.27'
-  VersionChanged: '0.81'
-  # The ABC size is a calculated magnitude, so this number can be an Integer or
-  # a Float.
-  AllowedMethods: []
-  Max: 50
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
 
-
+# wyjaśnienie: nie wiem dlaczego get w prefixie metody jest zle
 Naming/AccessorMethodName:
   Description: Check the naming of accessor methods for get_/set_.
   StyleGuide: '#accessor_mutator_method_names'
   Enabled: false
   VersionAdded: '0.50'
 
+# wyjaśnienie: można to włączyć
 Naming/PredicateName:
   Description: 'Check the names of predicate methods.'
   StyleGuide: '#bool-methods-qmark'
@@ -158,6 +151,12 @@ Naming/PredicateName:
   Exclude:
     - 'spec/**/*'
 
+# wyjaśnienie: railsy nie spełniają
+Naming/InclusiveLanguage:
+  Enabled: false
+
+# Naming/BlockForwarding:
+#   Enabled: false
 
 Style/AndOr:
   Description: 'Use &&/|| instead of and/or.'
@@ -172,14 +171,13 @@ Style/AndOr:
     - always
     - conditionals
 
-
-Style/AsciiComments:
-  Description: 'Use only ascii symbols in comments.'
-  StyleGuide: '#english-comments'
-  Enabled: false
-  VersionAdded: '0.9'
-  VersionChanged: '0.52'
-  AllowedChars: []
+# Style/AsciiComments:
+#   Description: 'Use only ascii symbols in comments.'
+#   StyleGuide: '#english-comments'
+#   Enabled: false
+#   VersionAdded: '0.9'
+#   VersionChanged: '0.52'
+#   AllowedChars: []
 
 Style/BlockDelimiters:
   Description: >-
@@ -302,7 +300,7 @@ Style/ClassAndModuleChildren:
   # have the knowledge to perform either operation safely and thus requires
   # manual oversight.
   SafeAutoCorrect: false
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.19'
   #
   # Basically there are two different styles:
@@ -318,25 +316,25 @@ Style/ClassAndModuleChildren:
   #   end
   #
   # The compact style is only forced, for classes or modules with one child.
-  EnforcedStyle: nested
+  EnforcedStyle: compact
   SupportedStyles:
     - nested
     - compact
 
-Style/CommentedKeyword:
-  Description: 'Do not place comments on the same line as certain keywords.'
-  Enabled: false
-  VersionAdded: '0.51'
+# Style/CommentedKeyword:
+#   Description: 'Do not place comments on the same line as certain keywords.'
+#   Enabled: false
+#   VersionAdded: '0.51'
 
 Style/ConditionalAssignment:
   Description: >-
                  Use the return value of `if` and `case` statements for
                  assignment to a variable and variable comparison instead
                  of assigning that variable inside of each branch.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.36'
   VersionChanged: '0.47'
-  EnforcedStyle: assign_to_condition
+  EnforcedStyle: assign_inside_condition
   SupportedStyles:
     - assign_to_condition
     - assign_inside_condition
@@ -347,16 +345,15 @@ Style/ConditionalAssignment:
   # will only register an offense for assignment to a condition that has
   # at least one multiline branch.
   SingleLineConditionsOnly: true
-  IncludeTernaryExpressions: true
+  IncludeTernaryExpressions: false
 
-Style/Documentation:
-  Description: 'Document classes and non-namespace modules.'
-  Enabled: false
-  VersionAdded: '0.9'
-  Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
-
+# Style/Documentation:
+#   Description: 'Document classes and non-namespace modules.'
+#   Enabled: false
+#   VersionAdded: '0.9'
+#   Exclude:
+#     - 'spec/**/*'
+#     - 'test/**/*'
 
 Style/EmptyMethod:
   Description: 'Checks the formatting of empty method definitions.'
@@ -405,10 +402,10 @@ Style/FrozenStringLiteralComment:
   Description: >-
                  Add the frozen_string_literal comment to the top of files
                  to help transition to frozen string literals by default.
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.36'
   VersionChanged: '0.79'
-  EnforcedStyle: always
+  EnforcedStyle: never
   SupportedStyles:
     # `always` will always add the frozen string literal comment to a file
     # regardless of the Ruby version or if `freeze` or `<<` are called on a
@@ -424,37 +421,38 @@ Style/FrozenStringLiteralComment:
   SafeAutoCorrect: false
 
 
-Style/IfUnlessModifier:
-  Description: >-
-                 Favor modifier if/unless usage when you have a
-                 single-line body.
-  StyleGuide: '#if-as-a-modifier'
-  Enabled: false
-  VersionAdded: '0.9'
-  VersionChanged: '0.30'
+# Style/IfUnlessModifier:
+#   Description: >-
+#                  Favor modifier if/unless usage when you have a
+#                  single-line body.
+#   StyleGuide: '#if-as-a-modifier'
+#   Enabled: false
+#   VersionAdded: '0.9'
+#   VersionChanged: '0.30'
 
 Style/MultilineMethodSignature:
   Description: 'Avoid multi-line method signatures.'
   Enabled: true
   VersionAdded: '0.59'
 
-Style/MutableConstant:
-  Description: 'Do not assign mutable objects to constants.'
-  Enabled: false
-  VersionAdded: '0.34'
-  VersionChanged: '0.65'
-  EnforcedStyle: literals
-  SupportedStyles:
-    # literals: freeze literals assigned to constants
-    # strict: freeze all constants
-    # Strict mode is considered an experimental feature. It has not been updated
-    # with an exhaustive list of all methods that will produce frozen objects so
-    # there is a decent chance of getting some false positives. Luckily, there is
-    # no harm in freezing an already frozen object.
-    - literals
-    - strict
+# Style/MutableConstant:
+#   Description: 'Do not assign mutable objects to constants.'
+#   Enabled: false
+#   VersionAdded: '0.34'
+#   VersionChanged: '0.65'
+#   EnforcedStyle: literals
+#   SupportedStyles:
+#     # literals: freeze literals assigned to constants
+#     # strict: freeze all constants
+#     # Strict mode is considered an experimental feature. It has not been updated
+#     # with an exhaustive list of all methods that will produce frozen objects so
+#     # there is a decent chance of getting some false positives. Luckily, there is
+#     # no harm in freezing an already frozen object.
+#     - literals
+#     - strict
 
 
+# wyjaśnienie: generalnie jestem przeciwnikiem `unless`
 Style/NegatedIf:
   Description: >-
                  Favor unless over if for negative conditions
@@ -475,24 +473,24 @@ Style/NegatedIf:
 Style/NilComparison:
   Description: 'Prefer x.nil? to x == nil.'
   StyleGuide: '#predicate-methods'
-  Enabled: false
+  Enabled: true
   VersionAdded: '0.12'
   VersionChanged: '0.59'
-  EnforcedStyle: predicate
+  EnforcedStyle: comparison
   SupportedStyles:
     - predicate
     - comparison
 
-Style/NumericLiterals:
-  Description: >-
-                 Add underscores to large numeric literals to improve their
-                 readability.
-  StyleGuide: '#underscores-in-numerics'
-  Enabled: false
-  VersionAdded: '0.9'
-  VersionChanged: '0.48'
-  MinDigits: 5
-  Strict: false
+# Style/NumericLiterals:
+#   Description: >-
+#                  Add underscores to large numeric literals to improve their
+#                  readability.
+#   StyleGuide: '#underscores-in-numerics'
+#   Enabled: false
+#   VersionAdded: '0.9'
+#   VersionChanged: '0.48'
+#   MinDigits: 5
+#   Strict: false
 
 
 Style/NumericPredicate:
@@ -535,6 +533,7 @@ Style/PercentLiteralDelimiters:
     '%W': '[]'
   VersionChanged: '0.48.1'
 
+# wyjaśnienie: do przemyślenia (choć self. wydaje mi się ok)
 Style/RedundantSelf:
   Description: "Don't use self where it's not needed."
   StyleGuide: '#no-self-unless-required'
@@ -560,19 +559,19 @@ Style/StringLiterals:
 #   # use the same type of quotes on each line.
 #   ConsistentQuotesInMultiline: false
 
+# Style/SymbolArray:
+#   Description: 'Use %i or %I for arrays of symbols.'
+#   StyleGuide: '#percent-i'
+#   Enabled: false
+#   VersionAdded: '0.9'
+#   VersionChanged: '0.49'
+#   EnforcedStyle: percent
+#   MinSize: 2
+#   SupportedStyles:
+#     - percent
+#     - brackets
 
-Style/SymbolArray:
-  Description: 'Use %i or %I for arrays of symbols.'
-  StyleGuide: '#percent-i'
-  Enabled: false
-  VersionAdded: '0.9'
-  VersionChanged: '0.49'
-  EnforcedStyle: percent
-  MinSize: 2
-  SupportedStyles:
-    - percent
-    - brackets
-
+# wyjaśnienie: to przemyślenia
 Style/SymbolProc:
   Description: 'Use symbols as procs instead of blocks when possible.'
   Enabled: false
@@ -643,11 +642,12 @@ Style/GuardClause:
   # needs to have to trigger this cop
   MinBodyLength: 4
 
-Lint/DuplicateBranch:
-  Description: Checks that there are no repeated bodies within `if/unless`, `case-when` and `rescue` constructs.
-  Enabled: false
-  VersionAdded: '1.3'
+# Lint/DuplicateBranch:
+#   Description: Checks that there are no repeated bodies within `if/unless`, `case-when` and `rescue` constructs.
+#   Enabled: false
+#   VersionAdded: '1.3'
 
+# wyjaśnienie: lepsze jest `var_name = $2 || $1` niż `var_name = ::Regexp.last_match(2) || ::Regexp.last_match(1)`
 Style/PerlBackrefs:
   Description: 'Avoid Perl-style regex back references.'
   StyleGuide: '#no-perl-regexp-last-matchers'
@@ -656,23 +656,24 @@ Style/PerlBackrefs:
 
 Style/ZeroLengthPredicate:
   Description: 'Use #empty? when testing for objects of length 0.'
-  Enabled: false
-  Safe: false
+  Enabled: true
+  Safe: true
   VersionAdded: '0.37'
   VersionChanged: '0.39'
 
-Style/AccessModifierDeclarations:
-  Description: 'Checks style of how access modifiers are used.'
-  Enabled: false
-  VersionAdded: '0.57'
-  VersionChanged: '0.81'
-  EnforcedStyle: inline
-  SupportedStyles:
-    - inline
-    - group
-  AllowModifiersOnSymbols: true
-Style/MapToHash:
-  Enabled: false
+# Style/AccessModifierDeclarations:
+#   Description: 'Checks style of how access modifiers are used.'
+#   Enabled: false
+#   VersionAdded: '0.57'
+#   VersionChanged: '0.81'
+#   EnforcedStyle: inline
+#   SupportedStyles:
+#     - inline
+#     - group
+#   AllowModifiersOnSymbols: true
+
+# Style/MapToHash:
+#   Enabled: false
 
 # Style/RegexpLiteral:
 #   Description: 'Use / or %r around regular expressions.'
@@ -692,6 +693,31 @@ Style/MapToHash:
 #   # are found in the regexp string.
 #   AllowInnerSlashes: false
 
+Style/HashSyntax:
+  EnforcedShorthandSyntax: 'either'
+
+# Style/FetchEnvVar:
+#   Enabled: false
+
+# wyjaśnienie: do włączenia
+Style/MethodCallWithArgsParentheses:
+  Enabled: false
+  # AllowedMethods:
+  # - require
+  # - require_relative
+  # - require_dependency
+  # - yield
+  # - raise
+  # - puts
+  # Exclude:
+  # - "/**/Gemfile"
+
+Style/ClassMethodsDefinitions:
+  EnforcedStyle: def_self
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: no_comma
+
 
 ###### RAILS ######
 ###### RAILS ######
@@ -707,15 +733,18 @@ Rails/UnknownEnv:
       - development
       - test
 
-Rails/FilePath:
-  Enabled: false
+# Rails/FilePath:
+#   Enabled: false
 
+# wyjaśnienie: zwykla metoda wydaje sie lepsza niz nowa skladnia `delegate`
 Rails/Delegate:
   Enabled: false
 
+# wyjaśnienie: lepiej wygląda `![a:, :b].include?(:a)` niż `[:a, :b].exclude?(:a)`
 Rails/NegateInclude:
   Enabled: false
 
+# wyjaśnienie: do ustalenia
 Rails/SkipsModelValidations:
   Enabled: false
 
@@ -723,15 +752,28 @@ Rails/SkipsModelValidations:
 #   Enabled: true
 #   SafeAutoCorrect: false
 
+# wyjaśnienie: do ustalenia
+Rails/ReversibleMigration:
+  Enabled: false
+
+Rails/WhereExists:
+  EnforcedStyle: where
+
 ## MINITEST
 
-Minitest/TestMethodName:
-  Enabled: false
+# Minitest/TestMethodName:
+#   Enabled: false
 
-Minitest/AssertWithExpectedArgument:
-  Enabled: false
+# Minitest/AssertWithExpectedArgument:
+#   Enabled: false
 
 Minitest/MultipleAssertions:
+  Enabled: false
+
+Minitest/AssertPredicate:
+  Enabled: false
+
+Minitest/AssertInDelta:
   Enabled: false
 
 ## PERFORMANCE
@@ -739,52 +781,3 @@ Minitest/MultipleAssertions:
 Performance/CollectionLiteralInLoop:
   Enabled: false
 
-Naming/InclusiveLanguage:
-  Enabled: false
-
-Rails/ReversibleMigration:
-  Enabled: false
-
-# ruby 3.1 (na razie wyłączamy)
-
-Style/HashSyntax:
-  EnforcedShorthandSyntax: 'either'
-
-Naming/BlockForwarding:
-  Enabled: false
-
-Minitest/AssertPredicate:
-  Enabled: false
-
-# TODO: do włączenia
-Rails/I18nLocaleTexts:
-  Enabled: false
-
-Style/FetchEnvVar:
-  Enabled: false
-
-Layout/ParameterAlignment:
-  EnforcedStyle: with_fixed_indentation
-
-Style/MethodCallWithArgsParentheses:
-  Enabled: false
-  # AllowedMethods:
-  # - require
-  # - require_relative
-  # - require_dependency
-  # - yield
-  # - raise
-  # - puts
-  # Exclude:
-  # - "/**/Gemfile"
-
-Rails/WhereExists:
-  EnforcedStyle: where
-  Enabled: true
-
-Style/ClassMethodsDefinitions:
-  EnforcedStyle: def_self
-  Enabled: true
-
-Style/TrailingCommaInArguments:
-  EnforcedStyleForMultiline: no_comma
