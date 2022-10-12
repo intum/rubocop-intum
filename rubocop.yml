@@ -1,6 +1,8 @@
+# https://github.com/intum/rubocop-intum/blob/main/rubocop.yml
+
 # tu wpisujemy tylko różnice w odniesieniu od domyślnych reguł z pliku:
 # https://github.com/rubocop-hq/rubocop/blob/master/config/default.yml
-# https://github.com/Shopify/ruby-style-guide/blob/v2.8.0/rubocop.yml
+# https://github.com/Shopify/ruby-style-guide/blob/main/rubocop.yml
 
 inherit_gem:
   rubocop-shopify: rubocop.yml
